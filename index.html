@@ -3,27 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Football Training Analyzer</title>
+    <title>Jednoduchá JS stránka</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Football Training Analyzer</h1>
-            <p>Analýza sportovního výkonu</p>
+    <div class="page">
+        <header class="hero">
+            <p class="eyebrow">Football Training Analyzer</p>
+            <h1>Analýza tréninku fotbalu</h1>
+            <p class="lead">Jednoduchá stránka připravená na propojení s JavaScriptem podle struktury z PDF zadání.</p>
+
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-label">Distance</span>
+                    <strong>0 m</strong>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Shots</span>
+                    <strong>0</strong>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Effectiveness</span>
+                    <strong>0 %</strong>
+                </div>
+            </div>
         </header>
 
-        <main id="app">
-            <p class="notice">
-                Výsledky analýzy naleznete v <strong>konzoli prohlížeče</strong> (stiskněte F12).
-            </p>
+        <main id="app" class="app">
+            <section class="panel panel-wide">
+                <h2>Teoretický rozbor</h2>
+                <p id="app-text">Sem se později doplní text, který bude zpracovávat JS z datových souborů.</p>
+            </section>
+
+            <section class="cards">
+                <article class="card">
+                    <h2>Distance</h2>
+                    <p>Hodnota pro průběh tréninku a zátěž hráče.</p>
+                </article>
+                <article class="card">
+                    <h2>Shooting</h2>
+                    <p>Počet střel a jejich přesnost během tréninku.</p>
+                </article>
+                <article class="card">
+                    <h2>Effectiveness</h2>
+                    <p>Výsledná efektivita podle zadaných parametrů.</p>
+                </article>
+            </section>
+
+            <section class="panel diagram-panel">
+                <h2>Grafické znázornění UML</h2>
+                <div class="diagram-box">
+                    <div>
+                        <span class="diagram-kicker">UML</span>
+                        <strong>Prostor pro diagram</strong>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2>Výstup</h2>
+                <div id="output" class="output">Zatím prázdné</div>
+            </section>
         </main>
 
-        <footer>
-            <p>&copy; 2026 Lukáš Trnka - Projekt OOP</p>
+        <footer class="footer">
+            <p>Football Training Analyzer připravený pro doplnění logiky v JavaScriptu.</p>
         </footer>
     </div>
 
-   <script type="module" src="main.js"></script>
+    <script type="module" src="main.js"></script>
 </body>
 </html>
