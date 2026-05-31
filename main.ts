@@ -6,7 +6,7 @@ abstract class Training {
     protected _intensity: number;
 
     constructor(duration: number, intensity: number) {
-        // Validace dat v konstruktoru
+        // Základní kontrola, aby neprošly nesmyslné hodnoty
         if (duration <= 0) throw new Error("Délka trvání musí být kladná.");
         if (intensity < 1 || intensity > 10) throw new Error("Intenzita musí být mezi 1 a 10.");
         
@@ -14,11 +14,11 @@ abstract class Training {
         this._intensity = intensity;
     }
 
-    /** Abstraktní metody, které musí každý potomek implementovat */
+    /** Každý typ tréninku si dopočítá kalorie a zátěž po svém */
     abstract calculateCalories(): number;
     abstract calculateLoad(): number;
 
-    /** Společná metoda pro výpis informací */
+    /** Společný textový výpis pro všechny typy tréninku */
     public getSummary(): string {
         return `Trénink: trvání ${this._duration} min, intenzita ${this._intensity}/10`;
     }
@@ -30,12 +30,13 @@ class SprintTraining extends Training {
 
     constructor(duration: number, intensity: number, distance: number) {
         super(duration, intensity);
+        // Sprint potřebuje kladnou vzdálenost
         if (distance <= 0) throw new Error("Vzdálenost musí být kladná.");
         this.distance = distance;
     }
 
     calculateCalories(): number {
-        // Primitivní výpočet pro sprint
+        // Jednoduchý odhad kalorií pro sprint
         return this._duration * this._intensity * 1.5;
     }
 
@@ -50,12 +51,13 @@ class EnduranceTraining extends Training {
 
     constructor(duration: number, intensity: number, avgHeartRate: number) {
         super(duration, intensity);
+        // U vytrvalosti hlídáme tepovou frekvenci
         if (avgHeartRate <= 0) throw new Error("Tepová frekvence musí být kladná.");
         this.averageHeartRate = avgHeartRate;
     }
 
     calculateCalories(): number {
-        // Primitivní výpočet pro vytrvalost
+        // Jednoduchý odhad kalorií pro vytrvalost
         return this._duration * (this.averageHeartRate / 10);
     }
 
@@ -71,12 +73,14 @@ class ShootingTraining extends Training {
 
     constructor(duration: number, intensity: number, shots: number, accuracy: number) {
         super(duration, intensity);
+        // Střelba používá počet pokusů a přesnost
         this.shots = shots;
         this.accuracy = accuracy;
     }
 
     calculateCalories(): number {
-        return this._duration * 5; // Střelba pálí méně kalorií
+        // Střelba má menší energetickou náročnost
+        return this._duration * 5;
     }
 
     calculateLoad(): number {
