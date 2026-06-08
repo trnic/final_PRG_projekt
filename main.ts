@@ -88,6 +88,28 @@ class ShootingTraining extends Training {
     }
 }
 
+
+class SkillsTraining extends Training {
+    private technique: number;
+    private ballControl: number;
+
+    constructor(duration: number, intensity: number, technique: number, ballControl: number) {
+        super(duration, intensity);
+        if (technique < 0 || technique > 10) throw new Error("Technika musí být mezi 0 a 10.");
+        if (ballControl < 0 || ballControl > 10) throw new Error("Kontrola míče musí být mezi 0 a 10.");
+        this.technique = technique;
+        this.ballControl = ballControl;
+    }
+
+    calculateCalories(): number {
+        return this._duration * (this._intensity + this.technique + this.ballControl) * 0.6;
+    }
+
+    calculateLoad(): number {
+        return (this.technique + this.ballControl) * this._intensity;
+    }
+}
+
 const trainingInstances: Training[] = rawTrainings.map(data => {
     switch (data.type) {
         case 'sprint':
@@ -96,6 +118,8 @@ const trainingInstances: Training[] = rawTrainings.map(data => {
             return new EnduranceTraining(data.duration, data.intensity, data.averageHeartRate || 0);
         case 'shooting':
             return new ShootingTraining(data.duration, data.intensity, data.shots || 0, data.accuracy || 0);
+        case 'skills':
+            return new SkillsTraining(data.duration, data.intensity, data.technique || 0, data.ballControl || 0);
         default:
             throw new Error("Neznámý typ tréninku");
     }
