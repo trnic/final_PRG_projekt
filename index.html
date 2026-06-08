@@ -12,29 +12,86 @@
             <p class="eyebrow">Football Training Analyzer</p>
             <h1>Analýza tréninku fotbalu</h1>
             <p class="lead">Jednoduchá stránka připravená na propojení s JavaScriptem podle struktury z PDF zadání.</p>
+            <div class="training-list">
+                <details class="training-item">
+                    <summary>Sprint</summary>
+                    <div class="training-fields">
+                        <label>
+                            Duration (min)
+                            <input type="number" min="0" step="1" placeholder="Např. 30">
+                        </label>
+                        <label>
+                            Intensity
+                            <input type="number" min="0" max="10" step="1" placeholder="Např. 9">
+                        </label>
+                        <label>
+                            Distance (m)
+                            <input type="number" min="0" step="1" placeholder="Např. 400">
+                        </label>
+                    </div>
+                </details>
 
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-label">Distance</span>
-                    <strong>0 m</strong>
-                </div>
-                <div class="stat">
-                    <span class="stat-label">Shots</span>
-                    <strong>0</strong>
-                </div>
-                <div class="stat">
-                    <span class="stat-label">Effectiveness</span>
-                    <strong>0 %</strong>
-                </div>
+                <details class="training-item">
+                    <summary>Endurance</summary>
+                    <div class="training-fields">
+                        <label>
+                            Duration (min)
+                            <input type="number" min="0" step="1" placeholder="Např. 60">
+                        </label>
+                        <label>
+                            Intensity
+                            <input type="number" min="0" max="10" step="1" placeholder="Např. 6">
+                        </label>
+                        <label>
+                            Average heart rate
+                            <input type="number" min="0" step="1" placeholder="Např. 145">
+                        </label>
+                    </div>
+                </details>
+
+                <details class="training-item">
+                    <summary>Shooting</summary>
+                    <div class="training-fields">
+                        <label>
+                            Duration (min)
+                            <input type="number" min="0" step="1" placeholder="Např. 45">
+                        </label>
+                        <label>
+                            Intensity
+                            <input type="number" min="0" max="10" step="1" placeholder="Např. 5">
+                        </label>
+                        <label>
+                            Shots
+                            <input type="number" min="0" step="1" placeholder="Např. 50">
+                        </label>
+                        <label>
+                            Accuracy
+                            <input type="number" min="0" max="1" step="0.01" placeholder="Např. 0.8">
+                        </label>
+                    </div>
+                </details>
+
+                <details class="training-item">
+                    <summary>Skills</summary>
+                    <div class="training-fields">
+                        <label>
+                            Duration (min)
+                            <input type="number" min="0" step="1" placeholder="Např. 20">
+                        </label>
+                        <label>
+                            Intensity
+                            <input type="number" min="0" max="10" step="1" placeholder="Např. 10">
+                        </label>
+                        <label>
+                            Accuracy
+                            <input type="number" min="0" step="1" placeholder="Např. 200">
+                        </label>
+                    </div>
+                </details>
             </div>
         </header>
 
         <main id="app" class="app">
-            <section class="panel panel-wide">
-                <h2>Teoretický rozbor</h2>
-                <p id="app-text">Sem se později doplní text, který bude zpracovávat JS z datových souborů.</p>
-            </section>
-
             <section class="cards">
                 <article class="card">
                     <h2>Distance</h2>
@@ -48,16 +105,6 @@
                     <h2>Effectiveness</h2>
                     <p>Výsledná efektivita podle zadaných parametrů.</p>
                 </article>
-            </section>
-
-            <section class="panel diagram-panel">
-                <h2>Grafické znázornění UML</h2>
-                <div class="diagram-box">
-                    <div>
-                        <span class="diagram-kicker">UML</span>
-                        <strong>Prostor pro diagram</strong>
-                    </div>
-                </div>
             </section>
 
             <section class="panel">
