@@ -183,11 +183,152 @@ h1 {
 .output {
     min-height: 88px;
     display: grid;
-    place-items: center;
+    gap: 12px;
     border: 1px dashed var(--border);
     border-radius: 12px;
     color: var(--muted);
     background: #fafafa;
+}
+
+.result-item {
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #fff;
+    color: var(--text);
+}
+
+.result-item h3 {
+    margin: 0 0 8px;
+    font-size: 1rem;
+}
+
+.result-item p {
+    margin: 0 0 6px;
+}
+
+.result-item p:last-child {
+    margin-bottom: 0;
+}
+
+.btn-submit {
+    margin-top: 12px;
+    padding: 10px 16px;
+    background: var(--accent);
+    color: #fff;
+    border: 1px solid var(--accent-2);
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.btn-submit:hover {
+    background: var(--accent-2);
+}
+
+.btn-submit:active {
+    transform: scale(0.98);
+}
+
+.result-item--error {
+    border-color: #d9567a;
+    background: #fef5f7;
+}
+
+.result-item--error h3 {
+    color: #c23450;
+}
+
+.result-item--error p {
+    color: #a0244a;
+}
+
+.result-item.result-better {
+    border-left: 4px solid #4caf50;
+}
+
+.result-item.result-better h3::before {
+    content: '✓ ';
+    color: #4caf50;
+}
+
+.result-item.result-worse {
+    border-left: 4px solid #ff9800;
+}
+
+.result-item.result-worse h3::before {
+    content: '⚠ ';
+    color: #ff9800;
+}
+
+.result-item.result-same {
+    border-left: 4px solid #2196f3;
+}
+
+.result-item.result-same h3::before {
+    content: '= ';
+    color: #2196f3;
+}
+
+.panel {
+    margin-top: 32px;
+}
+
+.history-section {
+    margin-top: 24px;
+}
+
+.history-section h3 {
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+    color: var(--text);
+}
+
+.history-list {
+    display: grid;
+    gap: 8px;
+}
+
+.history-item {
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #fbfdfb;
+    font-size: 0.9rem;
+    color: var(--muted);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    align-items: center;
+}
+
+.history-item strong {
+    color: var(--text);
+}
+
+.history-item .score {
+    font-weight: 600;
+    color: var(--accent);
+    text-align: right;
+}
+
+.btn-export {
+    margin-top: 12px;
+    padding: 8px 14px;
+    background: #4caf50;
+    color: #fff;
+    border: 1px solid #45a049;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-export:hover {
+    background: #45a049;
 }
 
 .footer {

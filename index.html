@@ -12,7 +12,7 @@
             <p class="eyebrow">Football Training Analyzer</p>
             <h1>Analýza tréninku fotbalu</h1>
             <div class="training-list">
-                <details class="training-item">
+                <details class="training-item" data-type="sprint">
                     <summary>Sprint</summary>
                     <div class="training-fields">
                         <label>
@@ -27,10 +27,11 @@
                             Distance (m)
                             <input type="number" min="0" step="1" placeholder="Např. 400">
                         </label>
+                        <button type="button" class="btn-submit">Analyzovat</button>
                     </div>
                 </details>
 
-                <details class="training-item">
+                <details class="training-item" data-type="endurance">
                     <summary>Endurance</summary>
                     <div class="training-fields">
                         <label>
@@ -45,10 +46,11 @@
                             Average heart rate
                             <input type="number" min="0" step="1" placeholder="Např. 145">
                         </label>
+                        <button type="button" class="btn-submit">Analyzovat</button>
                     </div>
                 </details>
 
-                <details class="training-item">
+                <details class="training-item" data-type="shooting">
                     <summary>Shooting</summary>
                     <div class="training-fields">
                         <label>
@@ -67,10 +69,11 @@
                             Accuracy
                             <input type="number" min="0" max="1" step="0.01" placeholder="Např. 0.8">
                         </label>
+                        <button type="button" class="btn-submit">Analyzovat</button>
                     </div>
                 </details>
 
-                <details class="training-item">
+                <details class="training-item" data-type="skills">
                     <summary>Skills</summary>
                     <div class="training-fields">
                         <label>
@@ -89,6 +92,7 @@
                             Ball control
                             <input type="number" min="0" max="10" step="1" placeholder="Např. 8">
                         </label>
+                        <button type="button" class="btn-submit">Analyzovat</button>
                     </div>
                 </details>
             </div>
@@ -121,6 +125,7 @@
         </footer>
     </div>
 
-    <script type="module" src="main.js"></script>
+    <script src="data.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
