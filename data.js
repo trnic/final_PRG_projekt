@@ -1,10 +1,29 @@
-const rawTrainings = [
-    // Ukázková data pro sprint
-    { type: 'sprint', duration: 30, intensity: 9, distance: 400 },
-    // Ukázková data pro vytrvalost
-    { type: 'endurance', duration: 60, intensity: 6, averageHeartRate: 145 },
-    // Ukázková data pro střelbu
-    { type: 'shooting', duration: 45, intensity: 5, shots: 50, accuracy: 0.8 },
-    // Ukázková data pro skills
-    { type: 'skills', duration: 20, intensity: 10, technique: 7, ballControl: 8 }
+const trainingTypes = {
+    sprint: {
+        title: "Sprint",
+        valueLabel: "Vzdalenost",
+        unit: "m",
+    },
+    vytrvalost: {
+        title: "Vytrvalost",
+        valueLabel: "Prumerny tep",
+        unit: "bpm",
+    },
+    strelba: {
+        title: "Strelba",
+        valueLabel: "Pocet strel",
+        unit: "strel",
+    },
+    technika: {
+        title: "Technika",
+        valueLabel: "Hodnoceni techniky",
+        unit: "/10",
+    },
+};
+
+const exampleTrainings = [
+    { type: "sprint", minutes: 30, intensity: 9, value: 420 },
+    { type: "vytrvalost", minutes: 55, intensity: 6, value: 148 },
+    { type: "strelba", minutes: 40, intensity: 7, value: 65 },
+    { type: "technika", minutes: 25, intensity: 5, value: 8 },
 ];

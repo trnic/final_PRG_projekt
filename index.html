@@ -3,127 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jednoduchá JS stránka</title>
+    <title>Football Training Analyzer</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="page">
-        <header class="hero">
+    <main class="page">
+        <section class="intro">
             <p class="eyebrow">Football Training Analyzer</p>
-            <h1>Analýza tréninku fotbalu</h1>
-            <div class="training-list">
-                <details class="training-item" data-type="sprint">
-                    <summary>Sprint</summary>
-                    <div class="training-fields">
-                        <label>
-                            Duration (min)
-                            <input type="number" min="0" step="1" placeholder="Např. 30">
-                        </label>
-                        <label>
-                            Intensity
-                            <input type="number" min="0" max="10" step="1" placeholder="Např. 9">
-                        </label>
-                        <label>
-                            Distance (m)
-                            <input type="number" min="0" step="1" placeholder="Např. 400">
-                        </label>
-                        <button type="button" class="btn-submit">Analyzovat</button>
-                    </div>
-                </details>
+            <h1>Analyza fotbaloveho treninku</h1>
+            <p>
+                Jednoducha aplikace pro vyhodnoceni treninku. Zadas typ, delku,
+                intenzitu a hlavni hodnotu. Aplikace vypocita skore, odhad kalorii
+                a kratke doporuceni.
+            </p>
+        </section>
 
-                <details class="training-item" data-type="endurance">
-                    <summary>Endurance</summary>
-                    <div class="training-fields">
-                        <label>
-                            Duration (min)
-                            <input type="number" min="0" step="1" placeholder="Např. 60">
-                        </label>
-                        <label>
-                            Intensity
-                            <input type="number" min="0" max="10" step="1" placeholder="Např. 6">
-                        </label>
-                        <label>
-                            Average heart rate
-                            <input type="number" min="0" step="1" placeholder="Např. 145">
-                        </label>
-                        <button type="button" class="btn-submit">Analyzovat</button>
-                    </div>
-                </details>
+        <section class="layout">
+            <form id="training-form" class="panel">
+                <h2>Novy trenink</h2>
 
-                <details class="training-item" data-type="shooting">
-                    <summary>Shooting</summary>
-                    <div class="training-fields">
-                        <label>
-                            Duration (min)
-                            <input type="number" min="0" step="1" placeholder="Např. 45">
-                        </label>
-                        <label>
-                            Intensity
-                            <input type="number" min="0" max="10" step="1" placeholder="Např. 5">
-                        </label>
-                        <label>
-                            Shots
-                            <input type="number" min="0" step="1" placeholder="Např. 50">
-                        </label>
-                        <label>
-                            Accuracy
-                            <input type="number" min="0" max="1" step="0.01" placeholder="Např. 0.8">
-                        </label>
-                        <button type="button" class="btn-submit">Analyzovat</button>
-                    </div>
-                </details>
+                <label>
+                    Typ treninku
+                    <select id="type">
+                        <option value="sprint">Sprint</option>
+                        <option value="vytrvalost">Vytrvalost</option>
+                        <option value="strelba">Strelba</option>
+                        <option value="technika">Technika</option>
+                    </select>
+                </label>
 
-                <details class="training-item" data-type="skills">
-                    <summary>Skills</summary>
-                    <div class="training-fields">
-                        <label>
-                            Duration (min)
-                            <input type="number" min="0" step="1" placeholder="Např. 20">
-                        </label>
-                        <label>
-                            Intensity
-                            <input type="number" min="0" max="10" step="1" placeholder="Např. 10">
-                        </label>
-                        <label>
-                            Technique
-                            <input type="number" min="0" max="10" step="1" placeholder="Např. 7">
-                        </label>
-                        <label>
-                            Ball control
-                            <input type="number" min="0" max="10" step="1" placeholder="Např. 8">
-                        </label>
-                        <button type="button" class="btn-submit">Analyzovat</button>
-                    </div>
-                </details>
-            </div>
-        </header>
+                <label>
+                    Delka treninku
+                    <span class="input-row">
+                        <input id="minutes" type="number" min="1" placeholder="napr. 30">
+                        <span>min</span>
+                    </span>
+                </label>
 
-        <main id="app" class="app">
-            <section class="cards">
-                <article class="card">
-                    <h2>Distance</h2>
-                    <p>Hodnota pro průběh tréninku a zátěž hráče.</p>
-                </article>
-                <article class="card">
-                    <h2>Shooting</h2>
-                    <p>Počet střel a jejich přesnost během tréninku.</p>
-                </article>
-                <article class="card">
-                    <h2>Effectiveness</h2>
-                    <p>Výsledná efektivita podle zadaných parametrů.</p>
-                </article>
-            </section>
+                <label>
+                    Intenzita
+                    <span class="input-row">
+                        <input id="intensity" type="number" min="1" max="10" placeholder="1 az 10">
+                        <span>/10</span>
+                    </span>
+                </label>
+
+                <label>
+                    <span id="value-label">Vzdalenost</span>
+                    <span class="input-row">
+                        <input id="value" type="number" min="1" placeholder="napr. 120">
+                        <span id="value-unit">m</span>
+                    </span>
+                </label>
+
+                <button type="submit">Analyzovat</button>
+            </form>
 
             <section class="panel">
-                <h2>Výstup</h2>
-                <div id="output" class="output">Zatím prázdné</div>
+                <h2>Vysledek</h2>
+                <div id="output" class="output">
+                    Vyber ukazku nebo zadej vlastni trenink.
+                </div>
             </section>
-        </main>
+        </section>
 
-        <footer class="footer">
-            <p>Football Training Analyzer připravený pro doplnění logiky v JavaScriptu.</p>
-        </footer>
-    </div>
+        <section class="examples">
+            <h2>Rychle ukazky</h2>
+            <div>
+                <button type="button" data-example="0">Sprint</button>
+                <button type="button" data-example="1">Vytrvalost</button>
+                <button type="button" data-example="2">Strelba</button>
+                <button type="button" data-example="3">Technika</button>
+            </div>
+        </section>
+
+        <section class="panel history">
+            <h2>Historie</h2>
+            <ol id="history-list"></ol>
+        </section>
+    </main>
 
     <script src="data.js"></script>
     <script src="main.js"></script>
