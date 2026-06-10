@@ -1,3 +1,6 @@
+import { exampleTrainings, trainingTypes } from "./data.js";
+import type { TrainingExample, TrainingType } from "./data.js";
+
 type TrainingResult = TrainingExample & {
     score: number;
     calories: number;
