@@ -1,22 +1,22 @@
 const trainingTypes = {
     sprint: {
         title: "Sprint",
-        valueLabel: "Vzdalenost",
+        valueLabel: "Vzdálenost",
         unit: "m",
     },
     vytrvalost: {
         title: "Vytrvalost",
-        valueLabel: "Prumerny tep",
+        valueLabel: "Průměrný tep",
         unit: "bpm",
     },
     strelba: {
-        title: "Strelba",
-        valueLabel: "Pocet strel",
-        unit: "strel",
+        title: "Střelba",
+        valueLabel: "Počet střel",
+        unit: "střel",
     },
     technika: {
         title: "Technika",
-        valueLabel: "Hodnoceni techniky",
+        valueLabel: "Hodnocení techniky",
         unit: "/10",
     },
 };

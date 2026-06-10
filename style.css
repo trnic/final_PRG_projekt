@@ -191,10 +191,33 @@ dd {
     width: max-content;
     margin: 0;
     padding: 6px 10px;
-    color: var(--accent-dark);
     font-weight: 700;
-    background: #e3f1e9;
     border-radius: 6px;
+}
+
+.badge-lehky {
+    color: #15593a;
+    background: #e3f1e9;
+}
+
+.badge-stredni {
+    color: #7a5b12;
+    background: #fff4d6;
+}
+
+.badge-narocny {
+    color: #8f2d3f;
+    background: #ffe8ed;
+}
+
+button.secondary {
+    color: var(--accent-dark);
+    background: #edf7f1;
+    border-color: #c7dfd0;
+}
+
+button.secondary:hover {
+    background: #dff0e6;
 }
 
 .error {
@@ -226,6 +249,18 @@ dd {
     margin-top: 16px;
 }
 
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.history-header h2 {
+    margin-bottom: 0;
+}
+
 .history ol {
     display: grid;
     gap: 8px;
@@ -242,6 +277,20 @@ dd {
     background: #f7faf8;
     border: 1px solid var(--line);
     border-radius: 6px;
+}
+
+.history li[data-index] {
+    cursor: pointer;
+}
+
+.history li[data-index]:hover {
+    background: #edf7f1;
+}
+
+.history .empty {
+    justify-content: center;
+    color: var(--muted);
+    cursor: default;
 }
 
 @media (max-width: 760px) {

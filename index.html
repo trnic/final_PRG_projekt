@@ -10,32 +10,32 @@
     <main class="page">
         <section class="intro">
             <p class="eyebrow">Football Training Analyzer</p>
-            <h1>Analyza fotbaloveho treninku</h1>
+            <h1>Analýza fotbalového tréninku</h1>
             <p>
-                Jednoducha aplikace pro vyhodnoceni treninku. Zadas typ, delku,
-                intenzitu a hlavni hodnotu. Aplikace vypocita skore, odhad kalorii
-                a kratke doporuceni.
+                Jednoduchá aplikace pro vyhodnocení tréninku. Zadáš typ, délku,
+                intenzitu a hlavní hodnotu. Aplikace vypočítá skóre, odhad kalorií
+                a krátké doporučení.
             </p>
         </section>
 
         <section class="layout">
             <form id="training-form" class="panel">
-                <h2>Novy trenink</h2>
+                <h2>Nový trénink</h2>
 
                 <label>
-                    Typ treninku
+                    Typ tréninku
                     <select id="type">
                         <option value="sprint">Sprint</option>
                         <option value="vytrvalost">Vytrvalost</option>
-                        <option value="strelba">Strelba</option>
+                        <option value="strelba">Střelba</option>
                         <option value="technika">Technika</option>
                     </select>
                 </label>
 
                 <label>
-                    Delka treninku
+                    Délka tréninku
                     <span class="input-row">
-                        <input id="minutes" type="number" min="1" placeholder="napr. 30">
+                        <input id="minutes" type="number" min="1" required placeholder="např. 30">
                         <span>min</span>
                     </span>
                 </label>
@@ -43,15 +43,15 @@
                 <label>
                     Intenzita
                     <span class="input-row">
-                        <input id="intensity" type="number" min="1" max="10" placeholder="1 az 10">
+                        <input id="intensity" type="number" min="1" max="10" required placeholder="1 až 10">
                         <span>/10</span>
                     </span>
                 </label>
 
                 <label>
-                    <span id="value-label">Vzdalenost</span>
+                    <span id="value-label">Vzdálenost</span>
                     <span class="input-row">
-                        <input id="value" type="number" min="1" placeholder="napr. 120">
+                        <input id="value" type="number" min="1" required placeholder="např. 120">
                         <span id="value-unit">m</span>
                     </span>
                 </label>
@@ -60,25 +60,28 @@
             </form>
 
             <section class="panel">
-                <h2>Vysledek</h2>
+                <h2>Výsledek</h2>
                 <div id="output" class="output">
-                    Vyber ukazku nebo zadej vlastni trenink.
+                    Vyber ukázku nebo zadej vlastní trénink.
                 </div>
             </section>
         </section>
 
         <section class="examples">
-            <h2>Rychle ukazky</h2>
+            <h2>Rychlé ukázky</h2>
             <div>
                 <button type="button" data-example="0">Sprint</button>
                 <button type="button" data-example="1">Vytrvalost</button>
-                <button type="button" data-example="2">Strelba</button>
+                <button type="button" data-example="2">Střelba</button>
                 <button type="button" data-example="3">Technika</button>
             </div>
         </section>
 
         <section class="panel history">
-            <h2>Historie</h2>
+            <div class="history-header">
+                <h2>Historie</h2>
+                <button type="button" id="clear-history" class="secondary">Vymazat</button>
+            </div>
             <ol id="history-list"></ol>
         </section>
     </main>
