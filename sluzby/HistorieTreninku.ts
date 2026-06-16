@@ -6,68 +6,44 @@ import { VysledekTreninku } from "../modely/VysledekTreninku.js";
 export class HistorieTreninku {
 
     historie: VysledekTreninku[];
-
     klicProLocalStorage: string;
 
-    /**
-     * Vytvoří prázdnou historii.
-     */
     constructor() {
-
         this.historie = [];
-
         this.klicProLocalStorage = "training-history";
     }
 
-    /**
-     * Vrátí historii tréninků.
-     */
     ziskejHistorii(): VysledekTreninku[] {
-
         return this.historie;
     }
 
-    /**
-     * Přidá nový výsledek do historie.
-     */
     pridejDoHistorie(vysledek: VysledekTreninku): void {
-
         this.historie.unshift(vysledek);
-
         this.ulozHistorii();
     }
 
-    /**
-     * Uloží historii do localStorage.
-     */
     ulozHistorii(): void {
-
-        localStorage.setItem(
-            this.klicProLocalStorage,
-            JSON.stringify(this.historie)
-        );
+        localStorage.setItem(this.klicProLocalStorage, JSON.stringify(this.historie));
     }
 
-    /**
-     * Načte historii z localStorage.
-     */
     nactiHistorii(): void {
-
-        const ulozenaHistorie = localStorage.getItem(
-            this.klicProLocalStorage
-        );
+        const ulozenaHistorie = localStorage.getItem(this.klicProLocalStorage);
 
         if (!ulozenaHistorie) {
             return;
         }
 
         try {
-
             const data = JSON.parse(ulozenaHistorie);
-
             this.historie = [];
 
             for (const polozka of data) {
+                // --- OPRAVA: Odolnost proti starým (anglickým) datům z minulé verze ---
+                // Pokud z paměti vytáhneme něco, co nemá vlastnost "typ", vyhodíme chybu.
+                // Kód tak automaticky přeskočí do "catch" bloku dole a stará data smaže.
+                if (!polozka.typ || !polozka.minuty) {
+                    throw new Error("Nalezena nekompatibilní data z předchozí verze.");
+                }
 
                 const vysledek = new VysledekTreninku(
                     polozka.typ,
@@ -83,25 +59,14 @@ export class HistorieTreninku {
 
                 this.historie.push(vysledek);
             }
-
         } catch {
-
-            localStorage.removeItem(
-                this.klicProLocalStorage
-            );
+            // Pokud nastane chyba, smažeme paměť, abychom aplikaci neblokovali
+            localStorage.removeItem(this.klicProLocalStorage);
         }
     }
 
-    /**
-     * Vymaže celou historii.
-     */
     vymazHistorii(): void {
-
         this.historie = [];
-
-        localStorage.removeItem(
-            this.klicProLocalStorage
-        );
+        localStorage.removeItem(this.klicProLocalStorage);
     }
-
 }

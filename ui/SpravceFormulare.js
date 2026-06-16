@@ -17,7 +17,6 @@ export class SpravceFormulare {
         historie,
         vykreslovac
     ) {
-
         this.validator = validator;
         this.analyzator = analyzator;
         this.historie = historie;
@@ -42,7 +41,6 @@ export class SpravceFormulare {
      * Vrátí číslo z inputu.
      */
     prectiCislo(input) {
-
         return Number(input?.value || 0);
     }
 
@@ -50,19 +48,21 @@ export class SpravceFormulare {
      * Aktualizuje text u hodnoty.
      */
     aktualizujPole() {
-
         const typ = this.typInput?.value || "sprint";
-
         const nastaveni = nastaveniTypuTreninku[typ];
 
         if (this.popisekHodnoty) {
-            this.popisekHodnoty.textContent =
-                nastaveni.popisekHodnoty;
+            this.popisekHodnoty.textContent = nastaveni.popisekHodnoty;
         }
 
         if (this.jednotka) {
-            this.jednotka.textContent =
-                nastaveni.jednotka;
+            this.jednotka.textContent = nastaveni.jednotka;
+        }
+
+        // --- OPRAVA: Dynamická změna zástupného textu (placeholder) a maxima (UX) ---
+        if (this.hodnotaInput) {
+            this.hodnotaInput.placeholder = typ === "technika" ? "např. 8" : "např. 120";
+            this.hodnotaInput.max = typ === "technika" ? "10" : "";
         }
     }
 
@@ -70,7 +70,6 @@ export class SpravceFormulare {
      * Vyplní ukázkový trénink.
      */
     vyplnUkazku(index) {
-
         const trenink = prikladoveTreninky[index];
 
         if (!trenink) {
@@ -82,18 +81,15 @@ export class SpravceFormulare {
         }
 
         if (this.minutyInput) {
-            this.minutyInput.value =
-                String(trenink.minuty);
+            this.minutyInput.value = String(trenink.minuty);
         }
 
         if (this.intenzitaInput) {
-            this.intenzitaInput.value =
-                String(trenink.intenzita);
+            this.intenzitaInput.value = String(trenink.intenzita);
         }
 
         if (this.hodnotaInput) {
-            this.hodnotaInput.value =
-                String(trenink.hodnota);
+            this.hodnotaInput.value = String(trenink.hodnota);
         }
 
         this.aktualizujPole();
@@ -108,25 +104,20 @@ export class SpravceFormulare {
      * Spustí aplikaci.
      */
     spustAplikaci() {
-
         this.historie.nactiHistorii();
 
         this.vykreslovac.zobrazHistorii(
             this.historie.ziskejHistorii(),
             (index) => {
-
                 const vysledek =
                     this.historie.ziskejHistorii()[index];
-
                 this.vykreslovac.zobrazVysledek(vysledek);
-
             }
         );
 
         this.formular?.addEventListener(
             "submit",
             (udalost) => {
-
                 udalost.preventDefault();
 
                 const trenink = new Trenink(
@@ -140,9 +131,7 @@ export class SpravceFormulare {
                     this.validator.zkontrolujTrenink(trenink);
 
                 if (chyba) {
-
                     this.vykreslovac.zobrazChybu(chyba);
-
                     return;
                 }
 
@@ -150,21 +139,16 @@ export class SpravceFormulare {
                     this.analyzator.analyzujTrenink(trenink);
 
                 this.historie.pridejDoHistorie(vysledek);
-
                 this.vykreslovac.zobrazVysledek(vysledek);
 
                 this.vykreslovac.zobrazHistorii(
                     this.historie.ziskejHistorii(),
                     (index) => {
-
                         const vysledek =
                             this.historie.ziskejHistorii()[index];
-
                         this.vykreslovac.zobrazVysledek(vysledek);
-
                     }
                 );
-
             }
         );
 
@@ -176,7 +160,6 @@ export class SpravceFormulare {
         this.tlacitkoVymazat?.addEventListener(
             "click",
             () => {
-
                 this.historie.vymazHistorii();
 
                 this.vykreslovac.zobrazHistorii(
@@ -184,27 +167,30 @@ export class SpravceFormulare {
                     () => {}
                 );
 
+                // --- OPRAVA: Vymazání starého výsledku z obrazovky ---
+                this.vykreslovac.vymazVysledekZpravou("Historie byla smazána. Zadej nový trénink.");
             }
         );
 
         this.tlacitkaUkazek.forEach((tlacitko) => {
-
             tlacitko.addEventListener(
                 "click",
                 () => {
-
                     const index =
                         Number(tlacitko.dataset.example);
-
                     this.vyplnUkazku(index);
-
                 }
             );
-
         });
 
-        this.vyplnUkazku(0);
-
+        // --- OPRAVA: Zamezení přepisování historie po startu aplikace ---
+        if (this.historie.ziskejHistorii().length > 0) {
+            // Pokud máme uloženou historii, ukážeme nejnovější výsledek z ní
+            this.vykreslovac.zobrazVysledek(this.historie.ziskejHistorii()[0]);
+        } else {
+            // Pokud je historie prázdná, předvyplníme první trénink (Sprint)
+            this.vyplnUkazku(0);
+        }
     }
 
 }
