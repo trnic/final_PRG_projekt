@@ -1,7 +1,7 @@
 /**
  * Nastavení jednotlivých typů tréninku.
  */
-const nastaveniTypuTreninku = {
+export const nastaveniTypuTreninku = {
 
     sprint: {
         nazev: "Sprint",
