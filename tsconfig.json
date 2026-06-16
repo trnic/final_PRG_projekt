@@ -13,6 +13,6 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "bundler"
   },
-  "include": ["*.ts"],
+  "include": ["*.ts", "modely/Trenink.ts"],
   "exclude": ["node_modules"]
 }
