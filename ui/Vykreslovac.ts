@@ -6,13 +6,13 @@ import { nastaveniTypuTreninku } from "../data/NastaveniTypuTreninku.js";
  */
 export class Vykreslovac {
 
-    output: HTMLElement | null;
-    seznamHistorie: HTMLElement | null;
+    private output: HTMLElement | null;
+    private seznamHistorie: HTMLElement | null;
 
     /**
      * Najde potřebné HTML prvky.
      */
-    constructor() {
+    public constructor() {
         this.output = document.querySelector("#output");
         this.seznamHistorie = document.querySelector("#history-list");
     }
@@ -20,7 +20,7 @@ export class Vykreslovac {
     /**
      * Zobrazí chybovou hlášku.
      */
-    zobrazChybu(zprava: string): void {
+    public zobrazChybu(zprava: string): void {
         if (!this.output) {
             return;
         }
@@ -33,7 +33,7 @@ export class Vykreslovac {
     /**
      * Vrátí text s hodnotou podle typu tréninku.
      */
-    vytvorTextHodnoty(vysledek: VysledekTreninku): string {
+    private vytvorTextHodnoty(vysledek: VysledekTreninku): string {
         const nastaveni = nastaveniTypuTreninku[vysledek.typ as keyof typeof nastaveniTypuTreninku];
 
         if (vysledek.typ === "technika") {
@@ -46,7 +46,7 @@ export class Vykreslovac {
     /**
      * Zobrazí výsledek tréninku.
      */
-    zobrazVysledek(vysledek: VysledekTreninku): void {
+    public zobrazVysledek(vysledek: VysledekTreninku): void {
         if (!this.output) {
             return;
         }
@@ -95,7 +95,7 @@ export class Vykreslovac {
     /**
      * Vymaže aktuální výsledek a zobrazí zprávu.
      */
-    vymazVysledekZpravou(zprava: string): void {
+    public vymazVysledekZpravou(zprava: string): void {
         if (this.output) {
             this.output.textContent = zprava;
         }
@@ -104,7 +104,7 @@ export class Vykreslovac {
     /**
      * Zobrazí historii tréninků.
      */
-    zobrazHistorii(
+    public zobrazHistorii(
         historie: VysledekTreninku[],
         poKliknuti: (index: number) => void
     ): void {

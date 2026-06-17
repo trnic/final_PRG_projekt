@@ -5,28 +5,28 @@ import { VysledekTreninku } from "../modely/VysledekTreninku.js";
  */
 export class HistorieTreninku {
 
-    historie: VysledekTreninku[];
-    klicProLocalStorage: string;
+    private historie: VysledekTreninku[];
+    private klicProLocalStorage: string;
 
-    constructor() {
+    public constructor() {
         this.historie = [];
         this.klicProLocalStorage = "training-history";
     }
 
-    ziskejHistorii(): VysledekTreninku[] {
+    public ziskejHistorii(): VysledekTreninku[] {
         return this.historie;
     }
 
-    pridejDoHistorie(vysledek: VysledekTreninku): void {
+    public pridejDoHistorie(vysledek: VysledekTreninku): void {
         this.historie.unshift(vysledek);
         this.ulozHistorii();
     }
 
-    ulozHistorii(): void {
+    private ulozHistorii(): void {
         localStorage.setItem(this.klicProLocalStorage, JSON.stringify(this.historie));
     }
 
-    nactiHistorii(): void {
+    public nactiHistorii(): void {
         const ulozenaHistorie = localStorage.getItem(this.klicProLocalStorage);
 
         if (!ulozenaHistorie) {
@@ -65,7 +65,7 @@ export class HistorieTreninku {
         }
     }
 
-    vymazHistorii(): void {
+    public vymazHistorii(): void {
         this.historie = [];
         localStorage.removeItem(this.klicProLocalStorage);
     }

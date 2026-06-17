@@ -11,22 +11,22 @@ import { nastaveniTypuTreninku } from "../data/NastaveniTypuTreninku.js";
  */
 export class SpravceFormulare {
 
-    validator: ValidatorTreninku;
-    analyzator: AnalyzatorTreninku;
-    historie: HistorieTreninku;
-    vykreslovac: Vykreslovac;
+    private validator: ValidatorTreninku;
+    private analyzator: AnalyzatorTreninku;
+    private historie: HistorieTreninku;
+    private vykreslovac: Vykreslovac;
 
-    formular: HTMLFormElement | null;
-    typInput: HTMLSelectElement | null;
-    minutyInput: HTMLInputElement | null;
-    intenzitaInput: HTMLInputElement | null;
-    hodnotaInput: HTMLInputElement | null;
-    popisekHodnoty: HTMLElement | null;
-    jednotka: HTMLElement | null;
-    tlacitkoVymazat: HTMLButtonElement | null;
-    tlacitkaUkazek: NodeListOf<HTMLButtonElement>;
+    private formular: HTMLFormElement | null;
+    private typInput: HTMLSelectElement | null;
+    private minutyInput: HTMLInputElement | null;
+    private intenzitaInput: HTMLInputElement | null;
+    private hodnotaInput: HTMLInputElement | null;
+    private popisekHodnoty: HTMLElement | null;
+    private jednotka: HTMLElement | null;
+    private tlacitkoVymazat: HTMLButtonElement | null;
+    private tlacitkaUkazek: NodeListOf<HTMLButtonElement>;
 
-    constructor(
+    public constructor(
         validator: ValidatorTreninku,
         analyzator: AnalyzatorTreninku,
         historie: HistorieTreninku,
@@ -55,14 +55,14 @@ export class SpravceFormulare {
     /**
      * Vrátí číslo z inputu.
      */
-    prectiCislo(input: HTMLInputElement | null): number {
+    private prectiCislo(input: HTMLInputElement | null): number {
         return Number(input?.value || 0);
     }
 
     /**
      * Aktualizuje text u hodnoty.
      */
-    aktualizujPole(): void {
+    private aktualizujPole(): void {
         const typ = this.typInput?.value || "sprint";
         const nastaveni =
             nastaveniTypuTreninku[typ as keyof typeof nastaveniTypuTreninku];
@@ -85,7 +85,7 @@ export class SpravceFormulare {
     /**
      * Vyplní ukázkový trénink.
      */
-    vyplnUkazku(index: number): void {
+    private vyplnUkazku(index: number): void {
         const trenink = prikladoveTreninky[index];
 
         if (!trenink) {
@@ -119,7 +119,7 @@ export class SpravceFormulare {
     /**
      * Spustí aplikaci.
      */
-    spustAplikaci(): void {
+    public spustAplikaci(): void {
         this.historie.nactiHistorii();
 
         this.vykreslovac.zobrazHistorii(

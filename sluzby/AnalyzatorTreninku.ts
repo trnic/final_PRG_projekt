@@ -9,7 +9,7 @@ export class AnalyzatorTreninku {
     /**
      * Spočítá výsledné skóre.
      */
-    spocitejSkore(trenink: Trenink): number {
+    private spocitejSkore(trenink: Trenink): number {
 
         const zaklad = trenink.minuty * 0.7 + trenink.intenzita * 6;
 
@@ -28,7 +28,7 @@ export class AnalyzatorTreninku {
     /**
      * Vrátí náročnost tréninku.
      */
-    ziskejUroven(skore: number): { uroven: string, tridaUrovne: string } {
+    private ziskejUroven(skore: number): { uroven: string, tridaUrovne: string } {
 
         if (skore < 40) {
             return {
@@ -53,7 +53,7 @@ export class AnalyzatorTreninku {
     /**
      * Vrátí doporučení podle náročnosti.
      */
-    ziskejDoporuceni(uroven: string): string {
+    private ziskejDoporuceni(uroven: string): string {
 
         if (uroven === "lehký") {
             return "Dobrý lehčí trénink. Příště můžeš mírně zvednout intenzitu.";
@@ -69,7 +69,7 @@ export class AnalyzatorTreninku {
     /**
      * Vyhodnotí celý trénink.
      */
-    analyzujTrenink(trenink: Trenink): VysledekTreninku {
+    public analyzujTrenink(trenink: Trenink): VysledekTreninku {
 
         const skore = this.spocitejSkore(trenink);
 

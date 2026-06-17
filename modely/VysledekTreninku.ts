@@ -5,16 +5,16 @@ import { Trenink } from "./Trenink.js";
  */
 export class VysledekTreninku extends Trenink {
 
-    skore: number;
-    kalorie: number;
-    uroven: string;
-    tridaUrovne: string;
-    doporuceni: string;
+    public skore: number;
+    public kalorie: number;
+    public uroven: string;
+    public tridaUrovne: string;
+    public doporuceni: string;
 
     /**
      * Vytvoří nový výsledek tréninku.
      */
-    constructor(
+    public constructor(
         typ: string,
         minuty: number,
         intenzita: number,

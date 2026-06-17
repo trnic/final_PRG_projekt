@@ -3,15 +3,15 @@
  */
 export class Trenink {
 
-    typ: string;
-    minuty: number;
-    intenzita: number;
-    hodnota: number;
+    public typ: string;
+    public minuty: number;
+    public intenzita: number;
+    public hodnota: number;
 
     /**
      * Vytvoří nový trénink.
      */
-    constructor(
+    public constructor(
         typ: string,
         minuty: number,
         intenzita: number,

@@ -8,7 +8,7 @@ export class ValidatorTreninku {
     /**
      * Zkontroluje, jestli jsou všechny hodnoty správné.
      */
-    zkontrolujTrenink(trenink: Trenink): string | null {
+    public zkontrolujTrenink(trenink: Trenink): string | null {
 
         if (trenink.minuty <= 0) {
             return "Délka tréninku musí být větší než 0 minut.";
